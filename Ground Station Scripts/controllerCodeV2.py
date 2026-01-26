@@ -8,7 +8,7 @@ import pygame
 import time
 
 #setting up connection 
-HOST = '192.168.1.168' #modify with rasberry pi ip 
+HOST = '192.168.1.169' #modify with rasberry pi ip 
 PORT = 1234
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
