@@ -98,4 +98,5 @@ while True:
 ```
 
 
-
+#To activiate the current virtual enviroment
+source .venv/bin/activate
