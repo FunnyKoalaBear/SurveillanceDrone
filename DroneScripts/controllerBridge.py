@@ -59,9 +59,15 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
                 start_time = time.time()
 
-                # 1. Get Input
+
                 try: 
+                    print("Hi")
+                    # 1. Get Input
                     commands = json.loads(data)
+                    
+                    #splitting the data by newline character
+                    commands = commands.split('/n') 
+                    
                     x = commands['p'] # Pitch
                     y = commands['r'] # Roll
                     z = commands['t'] # Throttle
@@ -69,7 +75,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     print(x, y, z, r)
                 
                 except json.JSONDecodeError:
-                    pass
+                    print("Input error")
+                    print("Commands are: ", commands)
 
                 # 2. Send MANUAL_CONTROL Message
                 # https://mavlink.io/en/messages/common.html#MANUAL_CONTROL
@@ -80,7 +87,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                         0 # Buttons mask (unused for now)
                     )
                 except UnboundLocalError:
-                    pass
+                    print("Transfer error")
 
                 # 3. Debug Print (Optional - prints every 20 loops to reduce spam)
                 # status_msg = f"Sent: P:{x} R:{y} T:{z} Y:{r}"

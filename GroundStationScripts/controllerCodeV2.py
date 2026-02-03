@@ -68,32 +68,12 @@ try:
 
         #sending the data 
         msg = json.dumps(dataPacket)
+
+        #Testing showed an error where multiple dictionaries were recieved at once
+        #Need to modify reciever code to parse the multiple dictionaries through the new line character and only use the newest dictionary recieved
+        msgWithStopper = msg + '\n'
         s.sendall(msg.encode('utf-8'))
 
-
-        # # Buttons on right
-        # for i in range(joystick.get_numbuttons()):
-            
-        #     state = joystick.get_button(i)
-
-        #     if state != prev_buttons[i]:
-        #         print(f"Button {i}: {'Pressed' if state else 'Released'}")
-        #         prev_buttons[i] = state
-
-        #         output = f"button{i}:{state}\n"
-        #         s.sendall(output.encode())
-
-        # # D-Pad (Buttons on left)
-        # for i in range(joystick.get_numhats()):
-
-        #     hat = joystick.get_hat(i)
-
-        #     if hat != prev_hats[i]:
-        #         print(f"Hat {i}: {hat}")
-        #         prev_hats[i] = hat
-
-        #         output = f"hat{i}:{hat[0]},{hat[1]}\n"
-        #         s.sendall(output.encode())
                 
         time.sleep(0.02)
 
