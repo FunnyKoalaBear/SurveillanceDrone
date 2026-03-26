@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1233</width>
+    <height>836</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>754</height>
+   </size>
+  </property>
+  <property name="cursor">
+   <cursorShape>CrossCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* ========================================================= */
+/* 1. GLOBAL UI &amp; FONTS                                      */
+/* ========================================================= */
+
+QMainWindow {
+    background-color: #121215; /* Dark charcoal background */
+    font-family: 'Consolas', 'Monaco', monospace; /* Technical font */
+    font-size: 14px;
+    color: #a0a0b0; /* Muted primary text */
+}
+
+QWidget {
+    outline: none; /* Removes focus border on widgets */
+}
+
+QLabel {
+    background: transparent;
+}
+
+
+/* ========================================================= */
+/* 2. THE CENTRAL VIDEO HUB (THE BIG ONE)                    */
+/* ========================================================= */
+
+/* Main label holding the video feed */
+#lbl_video_feed {
+    background-color: #000000; /* Black box to frame video */
+    border: 1px solid #2a2a35; /* Subtle border */
+    border-radius: 5px;
+}
+
+/* * HUD OVERLAYS (Transparent labels placed on top of video)
+ * Example names: HUD_Alt, HUD_Vel, HUD_Compass, HUD_Alert
+*/
+QLabel[objectName^=&quot;HUD_&quot;] {
+    background-color: rgba(20, 20, 30, 150); /* Semitransparent dark */
+    color: #4fd1c5; /* Neon Cyan text for HUD data */
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+/* The special Red Alert box at bottom-center of video */
+QLabel#HUD_Alert_Window {
+    color: #ffffff;
+    background-color: rgba(180, 20, 30, 200); /* Bright red, mostly opaque */
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #ef5350;
+    padding: 15px;
+}
+
+
+/* ========================================================= */
+/* 3. CONTAINERS (Cards/Panels)                              */
+/* ========================================================= */
+
+/* Style for frames acting as containers (Sidebars, Cards) */
+QFrame {
+    background-color: #1e1e24; /* Lighter dark background for cards */
+    border: 1px solid #2a2a35; /* Card edges */
+    border-radius: 8px;
+    margin: 5px;
+}
+
+/* Header text inside a card */
+QFrame QLabel[objectName$=&quot;_header&quot;] {
+    font-size: 11px;
+    font-weight: bold;
+    color: #6a6a75; /* Subdued header text */
+    background: transparent;
+    border: none;
+    text-transform: uppercase;
+}
+
+
+/* ========================================================= */
+/* 4. BUTTONS &amp; COMMANDS                                     */
+/* ========================================================= */
+
+/* Standard tactical button (Sidebars) */
+QPushButton {
+    background-color: #1e1e24; /* Muted button color */
+    color: #a0a0b0;
+    border: 1px solid #2a2a35;
+    border-radius: 5px;
+    padding: 12px;
+    font-weight: bold;
+    text-align: left; /* Keep icons on left, text next to it */
+}
+
+/* Hover effect */
+QPushButton:hover {
+    background-color: #2a2a35;
+    border: 1px solid #4fd1c5; /* Cyan neon glow border */
+    color: #ffffff;
+}
+
+/* Pressed/Active state */
+QPushButton:pressed {
+    background-color: #121215;
+    border: 1px solid #ffffff;
+}
+
+/* CRITICAL: ARM BUTTON (Targeting specific objectName) */
+QPushButton#btn_arm {
+    background-color: rgba(210, 30, 30, 50); /* Subdued red */
+    color: #ef5350; /* Base red text */
+    border: 1px solid #662222;
+    text-align: center;
+}
+
+QPushButton#btn_arm:hover {
+    background-color: #ef5350; /* Bright red hover */
+    border: 1px solid #ff9999;
+    color: #ffffff;
+}
+
+/* ACTION: DOCKING BUTTON (Targeting specific objectName) */
+QPushButton#btn_docking {
+    background-color: rgba(20, 160, 160, 50); /* Subdued cyan */
+    color: #4fd1c5; /* Base cyan text */
+    border: 1px solid #2a6a6a;
+    text-align: center;
+}
+
+QPushButton#btn_docking:hover {
+    background-color: #4fd1c5; /* Bright cyan hover */
+    border: 1px solid #80ffff;
+    color: #ffffff;
+}
+
+
+/* ========================================================= */
+/* 5. INPUTS &amp; LOG CONSOLE                                   */
+/* ========================================================= */
+
+/* Log Menu Console / SSH Input */
+QTextEdit, QLineEdit {
+    background-color: #0c0c0e; /* Deep black background */
+    color: #4fd1c5; /* Bright cyan console text */
+    border: 1px solid #2a2a35;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+QTextEdit:focus, QLineEdit:focus {
+    border: 1px solid #ffffff;
+}
+
+
+/* ========================================================= */
+/* 6. TELEMETRY VISUALIZATIONS (Linear Bars)                 */
+/* ========================================================= */
+
+/* Horizontal Progress Bars (Drone Draw, Claw Draw, Battery) */
+QProgressBar {
+    border: none;
+    border-radius: 3px;
+    background-color: #121215; /* Groove color */
+    text-align: right;
+    margin: 5px 0px;
+    font-size: 10px;
+    color: transparent; /* Hide text if you want, or make it cyan */
+}
+
+/* Style the progress chunk */
+QProgressBar::chunk {
+    background-color: #4fd1c5; /* Cyan neon fill */
+    border-radius: 3px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout"/>
+    </item>
+    <item row="1" column="2">
+     <layout class="QVBoxLayout" name="verticalLayout_2"/>
+    </item>
+    <item row="0" column="0">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="1">
+     <widget class="QGraphicsView" name="videoFeed">
+      <property name="cursor" stdset="0">
+       <cursorShape>CrossCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>System Actions</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="text">
+         <string>ARM/DISARM</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>Dock </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Speak</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="text">
+         <string>Park</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
