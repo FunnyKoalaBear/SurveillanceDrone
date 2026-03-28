@@ -5,6 +5,9 @@ import cv2
 import mediapipe as mp
 from ultralytics import YOLO
 
+import os 
+
+
 
 # --- 1. INITIALIZE MODELS ---
 # MediaPipe for CPU-optimized Face Detection
@@ -19,9 +22,16 @@ weapon_model = YOLO('models/yolov8n.pt')
 
 
 # --- 2. SETUP VIDEO STREAM ---
-# Replace 0 with your drone's video stream URL or IP if needed
-cap = cv2.VideoCapture(0)
+os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "fflags;nobuffer|flags;low_delay"
+ip = "172.20.10.4"
+stream_url = f"tcp://{ip}:2200"
 
+# Replace 0 with your drone's video stream URL or IP if needed
+cap = cv2.VideoCapture(stream_url, cv2.CAP_FFMPEG)
+
+if not cap.isOpened():
+    print("Error: Could not open video stream.")
+    exit()
 
 # --- 3. OPTIMIZATION VARIABLES ---
 frame_skip_rate = 3  # Only run YOLO every 3rd frame
