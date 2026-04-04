@@ -1,3 +1,6 @@
 DroneScripts/mavlinkLearning
 .venv
 Computer_Vision/models
+venv
+
+Control_Application/src/__pycache__
