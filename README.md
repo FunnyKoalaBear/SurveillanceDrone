@@ -1,7 +1,7 @@
 # Surveillance Drone Project
 
 
-## Project Image
+## Prototype Image
 ![Surveillance Drone](Models/surveillance-drone-prototype.jpeg)
 
 
