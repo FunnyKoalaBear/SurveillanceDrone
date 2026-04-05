@@ -1,5 +1,11 @@
 # Surveillance Drone Project
 
+
+## Prototype Image
+![Surveillance Drone](Models/surveillance-drone-prototype.jpeg)
+
+
+
 ## Overview
 The **Surveillance Drone Project** is an advanced engineering initiative combining **embedded systems, robotics, and wireless communication**. The drone is designed for aerial monitoring and real-time data transmission using onboard sensors and computer vision systems.
 
