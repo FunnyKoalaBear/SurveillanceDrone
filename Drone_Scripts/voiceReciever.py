@@ -14,7 +14,7 @@ sd.default.channels = 1 #mono audio
 #python3 -m sounddevice #to check supported output/input devices 
 
 #network setup 
-HOST = "192.168.1.120"  # The server's hostname or IP address
+HOST = "192.168.1.119"  # The server's hostname or IP address
 PORT = 1234  # The port used by the server
 
 

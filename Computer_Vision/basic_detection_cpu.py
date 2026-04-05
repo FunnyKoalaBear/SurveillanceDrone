@@ -8,7 +8,6 @@ from ultralytics import YOLO
 import os 
 
 
-
 # --- 1. INITIALIZE MODELS ---
 # MediaPipe for CPU-optimized Face Detection
 mp_face_detection = mp.solutions.face_detection
@@ -23,7 +22,8 @@ weapon_model = YOLO('models/yolov8n.pt')
 
 # --- 2. SETUP VIDEO STREAM ---
 os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "fflags;nobuffer|flags;low_delay"
-ip = "172.20.10.4"
+#ip = "172.20.10.4" #hotspot
+ip = "192.168.1.167" #lab wifi
 stream_url = f"tcp://{ip}:2200"
 
 # Replace 0 with your drone's video stream URL or IP if needed

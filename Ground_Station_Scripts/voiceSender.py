@@ -16,7 +16,7 @@ gain = 20
 def callback(indata, status, frames, time):
     # if status:
     #     print(status)
-        
+    
     recording.append(indata.copy())
     #callback function appends raw audio from input stream to recording array
 
