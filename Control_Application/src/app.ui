@@ -118,6 +118,17 @@ QGroupBox QLabel {
     /* Force the labels back down so they don't stay giant */
     font: 12pt &quot;Ubuntu Sans&quot;;
     font-weight: normal; 
+}
+
+
+/* Immunity Shield for the Logo Label */
+QLabel#app_logo {
+background-color: transparent;
+border: none;
+padding: 0px;
+margin: 0px;
+/* If there is text, force it back to standard grey/white: */
+color: #E0E0E0;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -637,11 +648,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
        </item>
        <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="app_logo">
-         <property name="text">
-          <string/>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel#app_logo {
+    ...
+}</string>
          </property>
          <property name="pixmap">
-          <pixmap>../../../../.designer/backup/img/drone.png</pixmap>
+          <pixmap>img/drone.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
