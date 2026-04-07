@@ -4,3 +4,4 @@ Computer_Vision/models
 venv
 
 Control_Application/src/__pycache__
+Control_Application\__pycache__
